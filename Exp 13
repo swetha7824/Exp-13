@@ -1,0 +1,86 @@
+import java.util.ArrayList;
+
+public class StarManipulation {
+    public static void addStars(ArrayList<String> list) {
+        for (int i = list.size() - 1; i >= 0; i--) {
+            list.add(i, "*");
+        }
+    }
+
+    public static void removeStars(ArrayList<String> list) {
+        for (int i = list.size() - 1; i >= 0; i--) {
+            if (list.get(i).equals("*")) {
+                list.remove(i);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        ArrayList<String> myList = new ArrayList<>();
+        myList.add("the");
+        myList.add("quick");
+        myList.add("brown");
+        myList.add("fox");
+
+        System.out.println("Original List: " + myList);
+
+        addStars(myList);
+        System.out.println("After addStars: " + myList);
+
+        removeStars(myList);
+        System.out.println("After removeStars: " + myList);
+    }
+}
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+
+class Fruit {
+    private String name;
+    private double price;
+    private int quantity;
+
+    public Fruit(String name, double price, int quantity) {
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    @Override
+    public String toString() {
+        return "Fruit [name=" + name + ", price=" + price + ", quantity=" + quantity + "]";
+    }
+}
+
+public class FruitSortingExample {
+    public static void main(String[] args) {
+        // Creating an ArrayList to store fruit details
+        ArrayList<Fruit> fruits = new ArrayList<>();
+
+        // Adding 20 fruit details to the list
+        for (int i = 1; i <= 20; i++) {
+            Fruit fruit = new Fruit("Fruit" + i, 2.5 * i, i * 3);
+            fruits.add(fruit);
+        }
+
+        // Sorting the fruits based on price using Comparator
+        Collections.sort(fruits, Comparator.comparingDouble(Fruit::getPrice));
+
+        // Displaying the sorted fruits
+        for (Fruit fruit : fruits) {
+            System.out.println(fruit);
+        }
+    }
+}
